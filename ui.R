@@ -191,6 +191,47 @@ articlesPanel <- function() {
   )
 }
 
+
+addDownloadsTabPanel <- function(title) {
+  tabPanel(title,
+           #    fluidRow(
+           #      downloadButton("downloadCancerTypesData", "Download Cancer Types Table")
+           #    ),
+           
+           
+           sidebarLayout(
+             sidebarPanel(
+               
+               fluidRow(
+                 downloadButton("downloadCancerTypesData", "Download Cancer Types Table")
+               ),
+               
+               fluidRow(
+                 downloadButton("downloadDrugTreatmentsData", "Download Drugs Table")
+               ),
+               
+               #fluidRow(
+               # downloadButton("downloadChemicalsData", "Download Chemicals Table")
+               #),
+               
+               fluidRow(
+                 downloadButton("downloadMutationsData", "Download Mutations Table")
+               ),
+               
+               fluidRow(
+                 downloadButton("downloadGenesData", "Download Genes Table")
+               )
+             ),
+             mainPanel(
+               h3("To download one of the tables created from your inquiry, click on the corresponding button."),
+               h3("Ex: Click on the \"Download Mutations Table\" button to acquire a .csv file of your gene mutations search.")
+             )
+           )
+  )
+}
+
+
+
 logPanel <- function() {
   tabPanel("Log", verbatimTextOutput("log"))
 }
@@ -213,6 +254,7 @@ shinyUI(
             addTabPanel('Drugs', 'chemResults', "chemGraph"),
             addTabPanel("Mutations", "mutationResults", "mutGraph"),
             addTabPanel("Genes", "geneResults"),
+            addDownloadsTabPanel("Download"),
             tabPanel("Articles", articlesPanel())
 
           )))#, # end tabsetPanel and 1st row

@@ -332,4 +332,133 @@ shinyServer(function(input, output, session) {
         HTML("<h2> how are you? </h2>")
     })
 
+    
+    
+    
+    # Downloads cancer types table
+    
+    currentData <- reactive({
+      
+      data <- diseaseSummary$dat
+      
+      
+      #In MySQL, you will need to
+      #    source Genes.sql
+      #    source PubMut.sql
+      
+      data
+    })
+    
+    output$table <- DT::renderDataTable(DT::datatable({
+      currentData()
+    }))
+    
+    
+    output$downloadCancerTypesData <- downloadHandler(
+      "cancerTypes.csv",
+      content = function(file) {
+        write.csv(currentData(), file, row.names = FALSE)  
+      },
+      contentType = "text/csv"
+    )
+    
+    
+    
+    
+    # Downloads the treatments (pharmaceutical actions) table
+    
+    currentData2 <- reactive({
+      data <- paSummary$dat
+      data
+    })
+    
+    
+    # Filter data based on selections
+    output$table <- DT::renderDataTable(DT::datatable({
+      currentData2()
+    }))
+    
+    
+    output$downloadDrugTreatmentsData <- downloadHandler(
+      "DrugTreatmentsTable.csv",
+      content = function(file) {
+        write.csv(currentData2(), file, row.names = FALSE)  
+      },
+      contentType = "text/csv"
+    )
+    
+    
+    
+    #Downloads chemicals table
+    
+    #currentData2 <- reactive({
+    #  data <- chemSummary$dat
+    #  data
+    #})
+    
+    
+    # Filter data based on selections
+    #output$table <- DT::renderDataTable(DT::datatable({
+    #  currentData2()
+    #}))
+    
+    
+    #output$downloadChemicalsData <- downloadHandler(
+    #  "chemicalsTable.csv",
+    #  content = function(file) {
+    #    write.csv(currentData2(), file, row.names = FALSE)  
+    #  },
+    #  contentType = "text/csv"
+    #)
+    
+    
+    
+    
+    # Downloads mutations table
+    
+    currentData3 <- reactive({
+      data <- mutationSummary$dat
+      data
+    })
+    
+    # Filter data based on selections
+    output$table <- DT::renderDataTable(DT::datatable({
+      currentData3()
+    }))
+    
+    
+    output$downloadMutationsData <- downloadHandler(
+      "mutationsTable.csv",
+      content = function(file) {
+        write.csv(currentData3(), file, row.names = FALSE)  
+      },
+      contentType = "text/csv"
+    )
+    
+    
+    
+    
+    # Downloads the genes table
+    
+    currentData4 <- reactive({
+      data <- geneSummary$dat
+      data
+    })
+    
+    # Filter data based on selections
+    output$table <- DT::renderDataTable(DT::datatable({
+      currentData4()
+    }))
+    
+    
+    output$downloadGenesData <- downloadHandler(
+      "genesTable.csv",
+      content = function(file) {
+        write.csv(currentData4(), file, row.names = FALSE)  
+      },
+      contentType = "text/csv"
+    )
+    
+    
 })
+
