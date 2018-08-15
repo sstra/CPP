@@ -389,31 +389,7 @@ shinyServer(function(input, output, session) {
     
     
     
-    #Downloads chemicals table
-    
-    #currentData2 <- reactive({
-    #  data <- chemSummary$dat
-    #  data
-    #})
-    
-    
-    # Filter data based on selections
-    #output$table <- DT::renderDataTable(DT::datatable({
-    #  currentData2()
-    #}))
-    
-    
-    #output$downloadChemicalsData <- downloadHandler(
-    #  "chemicalsTable.csv",
-    #  content = function(file) {
-    #    write.csv(currentData2(), file, row.names = FALSE)  
-    #  },
-    #  contentType = "text/csv"
-    #)
-    
-    
-    
-    
+     
     # Downloads mutations table
     
     currentData3 <- reactive({
