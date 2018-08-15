@@ -26,7 +26,7 @@ tabAbout = tabPanel("About",
     div(class = "panel-body",
           p("Person 1",role("Contributor")),
           p("Person 2", role("Contributor")),
-          p("Stefanos Stravoravdis is a biology and mathematics major at Eastern Connecticut State University (Willimantic Connecticut)",
+          p("Stefanos Stravoravdis is a biology and mathematics major at Eastern Connecticut State University (Willimantic, Connecticut)",
             "with research interests involving bioinformatics and studying resistance in microorganisms.",
             role("Contributor"))
     )
