@@ -210,10 +210,6 @@ addDownloadsTabPanel <- function(title) {
                  downloadButton("downloadDrugTreatmentsData", "Download Drugs Table")
                ),
                
-               #fluidRow(
-               # downloadButton("downloadChemicalsData", "Download Chemicals Table")
-               #),
-               
                fluidRow(
                  downloadButton("downloadMutationsData", "Download Mutations Table")
                ),
